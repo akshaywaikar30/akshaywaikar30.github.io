@@ -21,7 +21,7 @@ body{
 	background-color: green;
 }
 .parallax{
-	background-image: url(../Images/macimage.jpeg);
+	background-image: url(../images/macimage.jpeg);
     background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
@@ -100,7 +100,7 @@ body{
     z-index:999;
 }
 #skills{
-    background-image: url(../Images/desktop.jpeg);
+    background-image: url(../images/desktop.jpeg);
     background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
