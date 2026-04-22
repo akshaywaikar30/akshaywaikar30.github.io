@@ -143,8 +143,7 @@ function ldv(){voices=synth.getVoices();if(!voices.length)synth.addEventListener
 function gv(g){if(!voices.length)voices=synth.getVoices();const p=g==='female'?['Microsoft Jenny Online','Google US English','Samantha','Google UK English Female','Zira','Karen','Ava','Aria']:['Microsoft Guy Online','Microsoft Ryan Online','Google UK English Male','Daniel','Alex','Microsoft David','Tom'];for(const n of p){const v=voices.find(v=>v.name.includes(n));if(v)return v}const l=voices.filter(v=>v.lang.startsWith('en'));return g==='female'?l.find(v=>/female|woman|jenny|samantha|ava|aria|zira|karen/i.test(v.name))||l[0]:l.find(v=>/male|man|guy|ryan|david|daniel|tom|alex/i.test(v.name))||l[1]||l[0]}
 let sq=[],isp=false,curAudio=null;
 function speak(t,o={}){if(S.vm||!S.active||!t)return;sq.push({t,o});if(!isp)pq()}
-function pq(){if(!sq.length){isp=false;return}isp=true;const{t,o}=sq.shift();
-try{const pv=S.vg==='female'?'Joanna':'Matthew';const url='https://api.streamelements.com/kappa/v2/speech?voice='+pv+'&text='+encodeURIComponent(t);const a=new Audio();curAudio=a;a.volume=S.vol;a.onended=()=>{curAudio=null;isp=false;pq()};a.onerror=()=>{curAudio=null;fb(t,o)};a.src=url;a.play().catch(()=>{curAudio=null;fb(t,o)})}catch(e){fb(t,o)}}
+function pq(){if(!sq.length){isp=false;return}isp=true;const{t,o}=sq.shift();fb(t,o)}
 function fb(t,o={}){try{synth.cancel()}catch(e){}const u=new SpeechSynthesisUtterance(t);const v=gv(S.vg);if(v)u.voice=v;u.rate=o.rate||1.0;u.pitch=1.0;u.volume=S.vol;u.onend=()=>{isp=false;pq()};u.onerror=()=>{isp=false;pq()};synth.speak(u)}
 function gl(){return S.vg==='female'?VL_F:VL_M}function pk(a){return a[Math.floor(Math.random()*a.length)]}function nm(t){return t.replace(/NAME/g,S.name||'buddy')}function exn(t,e){return t.replace(/EX/g,e)}
 
