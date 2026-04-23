@@ -165,7 +165,7 @@ document.querySelectorAll('.speed-chip').forEach(c=>c.addEventListener('click',(
 $('volSlider').addEventListener('input',e=>{S.vol=parseFloat(e.target.value);$('volLabel').textContent=Math.round(S.vol*100)+'%'});
 $('volToggle').addEventListener('click',()=>{S.vm=!S.vm;$('volToggle').innerHTML=S.vm?'&#128264;':'&#128266;'});
 function ss(id){document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));$(id).classList.add('active');window.scrollTo({top:0,behavior:'smooth'})}
-function gri(){return S.rs==='slow'?3500:S.rs==='fast'?1800:2500}
+function gri(){return S.rs==='slow'?5000:S.rs==='fast'?1000:2500}
 
 function gw(){const pool=EX[S.type]||EX.fullbody;const dm=S.diff==='beginner'?.65:S.diff==='advanced'?1.4:1;const rs=S.diff==='beginner'?20:S.diff==='advanced'?10:15;let tl=S.min*60,pk2=[],u=[...pool];for(let i=u.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[u[i],u[j]]=[u[j],u[i]]}let idx=0;while(tl>20&&pk2.length<20){const e={...u[idx%u.length]};idx++;if(e.t==='r')e.r=Math.max(4,Math.round(e.r*dm));if(e.t==='s')e.d=Math.max(10,Math.round(e.d*dm));const est=e.t==='r'?e.r*(gri()/1000):e.d;if(est+rs>tl&&pk2.length>0)break;e.ra=rs;e.cal=e.t==='r'?e.c*e.r*dm:e.c*e.d*dm;pk2.push(e);tl-=(est+rs)}if(pk2.length)pk2[pk2.length-1].ra=0;return pk2}
 
