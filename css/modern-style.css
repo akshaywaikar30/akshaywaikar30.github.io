@@ -391,6 +391,28 @@ body {
     margin-top: var(--spacing-xl);
 }
 
+.certifications-full-width {
+    width: 100%;
+    padding: 0 var(--spacing-md);
+}
+
+.certifications-full-width .section-title {
+    text-align: center;
+}
+
+.certifications-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-lg);
+    margin-top: var(--spacing-xl);
+}
+
+@media (max-width: 480px) {
+    .certifications-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
 .education-card {
     background-color: var(--bg-light);
     padding: var(--spacing-lg);
